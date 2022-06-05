@@ -14,10 +14,10 @@ def model():
     money_model.fc = nn.Sequential(
         nn.Linear(in_features, 1000),
         nn.ReLU(inplace=True),
-        nn.Dropout2d(0.5),
+        nn.Dropout(0.5),
         nn.Linear(1000, 500),
         nn.ReLU(inplace=True),
-        nn.Dropout2d(0.3),
+        nn.Dropout(0.3),
         nn.Linear(500, 5)
     )
     return money_model

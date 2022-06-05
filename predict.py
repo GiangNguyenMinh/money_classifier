@@ -21,6 +21,7 @@ def main(args):
     mean = (0.485, 0.456, 0.406)
     std = (0.229, 0.224, 0.225)
     cap = cv.VideoCapture(0)
+    start = cv.getTickCount()
     while 1:
         ret, frame = cap.read()
         if not ret:
@@ -37,14 +38,16 @@ def main(args):
         if acc >= args.thread_hold and predict_class != 0:
 
             font = cv.FONT_HERSHEY_SIMPLEX
-            org = (50, 50)
+            org = (50, 100)
             fontScale = 1.5
             color = (0, 255, 0)
             thickness = 2
 
             cv.putText(frame, classes[predict_class], org, font,
                        fontScale, color, thickness, cv.LINE_AA)
-
+        fps = cv.getTickFrequency() / (cv.getTickCount()-start)
+        start = cv.getTickCount()
+        cv.putText(frame, 'fps: {}'.format(str(int(fps))), (20, 50), cv.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
         cv.imshow('camera', frame)
 
         if cv.waitKey(1) & 0xFF == ord('q'):

@@ -1,0 +1,6 @@
+onnx
+onnxruntime
+opencv-python
+torch
+torchvision
+scikit-learn
