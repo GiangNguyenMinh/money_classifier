@@ -2,7 +2,8 @@
 # VietNamese Money Classifier
 
 ## Install 
-#### Environment
+### Environment
+#### op1: install serializion
 [anaconda-environment](https://www.anaconda.com/products/individual) with python>=3.8
 
 
@@ -14,7 +15,7 @@ Activate anaconda-environment then
 
 Install opencv: 
 ```bash
-pip install opencv-python
+$ pip install opencv-python
 ```
 
 
@@ -22,7 +23,11 @@ Install sklearn:
 ```bash
 pip3 install -U scikit-learn
 ```
-#### Setup 
+#### op2: install requirement.txt
+```bash
+$ pip install -r requirement.txt
+```
+### Setup 
 ```bash
 $ git clone https://github.com/GiangNguyenMinh/money_classifier.git
 $ cd money_classifier
@@ -42,8 +47,14 @@ $ python train.py --use-weights --lr 0.0001 --batch-size 32 --n-epochs 100 --n-w
 ```
 
 ## Inference
+* Inference with pytorch model
 ```bash
-$ predict.py --thread-hold 0.6
+$ python predict.py --thread-hold 0.6
+```
+* Inference with onnx model in onnxruntime
+```bash
+$ python export.py --onnx
+$ python predict_onnx.py
 ```
 
 ## Train colab
